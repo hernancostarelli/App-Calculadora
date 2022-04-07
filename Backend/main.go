@@ -129,13 +129,13 @@ func PostCalculo(w http.ResponseWriter, r *http.Request) {
 		w.Write(j)
 	*/
 
-	reqBody, err := ioutil.ReadAll(r.Body) // Guardo todo lo que llega en reqbody
+	requestBody, err := ioutil.ReadAll(r.Body) // Guardo todo lo que llega en requestBody
 
 	if err != nil {
 		fmt.Fprintf(w, "insert valid operator")
 	}
 
-	json.Unmarshal(reqBody, &calculo) // Asigno la info  que recibo a la variable calculo
+	json.Unmarshal(requestBody, &calculo) // Asigno la info  que recibo a la variable calculo
 
 	w.Header().Set("Content-Type", "application/json") // Que tipo de dato envío
 
