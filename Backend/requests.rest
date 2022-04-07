@@ -1,0 +1,18 @@
+### PETICIÓN GET
+
+// GET http://localhost:3000/
+
+
+GET http://localhost:3000/obtenerCalculo
+
+
+### PETICIÓN POST A /mandarCalculo
+
+POST  http://localhost:3000/mandarCalculo
+Content-Type: application/json
+
+{
+    "Numero1": 10,
+    "Operacion": "*",
+    "Numero2": 2
+}

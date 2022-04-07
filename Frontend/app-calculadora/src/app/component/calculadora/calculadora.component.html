@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./calculadora.component.css" type="text/css" rel="stylesheet" />
+
+  <title>CALCULADORA</title>
+</head>
+
+<body>
+
+  <div class="container" align="center">
+
+    <div class="jumbotron col-sm-4 p-2 m-0 bg-inverse" [style.border]="'2px solid black'">
+
+      <h2 class="text-center">HFC</h2>
+
+      <br>
+
+      <input class="col-sm-12" type="text" align="right" name="textBoxNumeros" [style.border]="'2px solid black'"
+        [value]="escribirPantalla" disabled>
+
+      <br>
+
+      <!--<div class="input-group input-group-lg col-sm-12 m-0 p-0">
+        <div class="col-sm-12 form-control text-lg-right" type="text" align="right" [style.border]="'2px solid black'">
+          {{input}}</div>
+      </div>
+
+      <br>
+
+      <div class="input-group input-group-lg col-sm-12 m-0 p-0">
+        <div class="form-control text-sm-right" type="text" align="right" [style.border]="'2px solid black'">
+          {{result}}
+        </div>
+      </div>-->
+
+      <br>
+
+      <div class="col-sm-12 p-1 m-0">
+        <button class="btn btn-danger col-sm-6" type="button" (click)="limpiarTodo()"
+          [style.border]="'0.5px solid black'">AC</button>
+        <button class="btn btn-dark col-sm-3" type="button" (click)="ingresarOperacion('√')"
+          [style.border]="'0.5px solid black'">√</button>
+        <button class="btn btn-dark col-sm-3" type="button" (click)="ingresarOperacion('**')"
+          [style.border]="'0.5px solid black'">**</button>
+      </div>
+
+      <div class="col-sm-12 p-1 m-0">
+        <button class="btn btn-warning col-sm-6" type="button" (click)="limpiar()"
+          [style.border]="'0.5px solid black'">C</button>
+        <button class="btn btn-dark col-sm-3" type="button" (click)="ingresarOperacion('%')"
+          [style.border]="'0.5px solid black'">%</button>
+        <button class="btn btn-dark col-sm-3" type="button" (click)="ingresarOperacion('/')"
+          [style.border]="'0.5px solid black'">/</button>
+      </div>
+
+      <div class="col-sm-12 p-1 m-0">
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="ingresarNumero('7')"
+          [style.border]="'0.5px solid black'">7</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="ingresarNumero('8')"
+          [style.border]="'0.5px solid black'">8</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="ingresarNumero('9')"
+          [style.border]="'0.5px solid black'">9</button>
+        <button class="btn btn-lg btn-dark col-sm-3 p-1" type="button" (click)="ingresarOperacion('*')"
+          [style.border]="'0.5px solid black'">X</button>
+      </div>
+
+      <div class="col-sm-12 p-1 m-0">
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="ingresarNumero('4')"
+          [style.border]="'0.5px solid black'">4</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="ingresarNumero('5')"
+          [style.border]="'0.5px solid black'">5</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="ingresarNumero('6')"
+          [style.border]="'0.5px solid black'">6</button>
+        <button class="btn btn-lg btn-dark col-sm-3 p-1" type="button" (click)="ingresarOperacion('-')"
+          [style.border]="'0.5px solid black'">-</button>
+      </div>
+
+      <div class="col-sm-12 p-1 m-0">
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="ingresarNumero('1')"
+          [style.border]="'0.5px solid black'">1</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="ingresarNumero('2')"
+          [style.border]="'0.5px solid black'">2</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="ingresarNumero('3')"
+          [style.border]="'0.5px solid black'">3</button>
+        <button class="btn btn-lg btn-dark col-sm-3 p-1" type="button" (click)="ingresarOperacion('+')"
+          [style.border]="'0.5px solid black'">+</button>
+      </div>
+
+      <div class="col-sm-12 p-1 m-0">
+        <button class="btn btn-lg btn-dark col-sm-3 p-1" type="button" (click)="ingresarNumero('.')"
+          [style.border]="'0.5px solid black'">.</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="ingresarNumero('0')"
+          [style.border]="'0.5px solid black'">0</button>
+        <button class="btn btn-lg btn-success col-sm-6 p-1" type="button" (click)="resultado()"
+          [style.border]="'0.5px solid black'">=</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- <div class="calculadora">
+
+    <form action="">
+      <table border="3">
+        <tr>
+          <td colspan="5">
+            <input type="text" name="textBoxNumeros" [value]="escribirPantalla" align="right"
+              [style.border]="'2px solid black'" disabled>
+          </td>
+        </tr>
+
+        <tr>
+          <td><button class="btn p-button-secondary" pButton type="button" value="7"
+              (click)="ingresarNumero(7)">7</button>
+          <td><button class="btn p-button-secondary" pButton type="button" value="8"
+              (click)="ingresarNumero(8)">8</button>
+          <td><button class="btn p-button-secondary" pButton type="button" value="9"
+              (click)="ingresarNumero(9)">9</button>
+          <td><button class="operations" type="button" value="+" (click)="ingresarOperacion('+')">+</button>
+          <td><button class="operations" type="button" value="-" (click)="ingresarOperacion('-')">-</button>
+        </tr>
+
+        <tr>
+          <td><button class="btn p-button-secondary" pButton type="button" value="4"
+              (click)="ingresarNumero(4)">4</button>
+          <td><button class="btn p-button-secondary" pButton type="button" value="5"
+              (click)="ingresarNumero(5)">5</button>
+          <td><button class="btn p-button-secondary" pButton type="button" value="6"
+              (click)="ingresarNumero(6)">6</button>
+          <td><button class="operations" type="button" value="*" (click)="ingresarOperacion('*')">*</button>
+          <td><button class="operations" type="button" value="/" (click)="ingresarOperacion('/')">/</button>
+        </tr>
+
+        <tr>
+          <td><button class="btn p-button-secondary" pButton type="button" value="1"
+              (click)="ingresarNumero(1)">1</button>
+          <td><button class="btn p-button-secondary" pButton type="button" value="2"
+              (click)="ingresarNumero(2)">2</button>
+          <td><button class="btn p-button-secondary" pButton type="button" value="3"
+              (click)="ingresarNumero(3)">3</button>
+          <td><button class="operations" type="button" value="^" (click)="ingresarOperacion('**')">^</button>
+          <td><button class="operations" type="button" value="√" (click)="ingresarOperacion('√')">√</button>
+        </tr>
+
+        <tr>
+          <td><button class="btn p-button-secondary" pButton type="button" value="0"
+              (click)="ingresarNumero(0)">0</button>
+          <td><button class="btn p-button-secondary" pButton type="button" value="."
+              (click)="ingresarNumero('.')">.</button>
+          <td><button class="clean" type="button" value="C" (click)="limpiar()">C</button>
+          <td colspan="2"><button class="result" type="button" value="     =     " (click)="resultado()">=</button>
+        </tr>
+      </table>
+
+    </form>
+
+  </div> -->
+
+
+</body>
+
+</html>
