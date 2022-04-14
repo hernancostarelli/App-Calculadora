@@ -132,8 +132,6 @@ export class CalculadoraComponent {
     )
   }
 
-
-
   /*
   constructor(){ }
 
