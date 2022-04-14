@@ -1,6 +1,6 @@
 # App-Calculadora
 
-Calculadora a modo API Rest realizada con:
+Calculadora API Rest realizada con:
 
 - Backend : Golang
 
